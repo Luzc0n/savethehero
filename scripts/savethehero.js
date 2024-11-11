@@ -279,11 +279,14 @@ $(document).ready(function(){
                             setTimeout(function() {
                                 audio_voice7.play();
                                 audio_voice7.addEventListener('ended', function() {
-                                    $("#msg_input_guide_img").attr('src', './images/nateon_input02.png');
+                                    $('#msg_input').css({
+                                        'margin-top': '870px'
+                                    });
+                                    $("#msg_input_guide_img").attr('src', './images/nateon_input02_01.png');
                                     $("#msg_input_guide").fadeIn(1000);
                                     setTimeout(function() {
-                                //        blink();
-                                    }, 2000);
+                                        $("#msg_input_guide_img").attr('src', './images/nateon_input02_02.png');
+                                    }, 30000);
                                 });
                             }, 1000);
                         }, 1500);
@@ -309,7 +312,12 @@ $(document).ready(function(){
                                 audio_voice9.play();
                                 audio_voice9.addEventListener('ended', function() {
                                     fadeOutAudio(audio_bgm_02, 1000);
-                                    audio_bgm_03.play();
+                                    $('#msg_input').css({
+                                        'margin-top': '844px'
+                                    });
+                                    setTimeout(function() {
+                                        audio_bgm_03.play();
+                                    }, 1000);
                                 });
                             }, 1000);
                         });
@@ -367,13 +375,13 @@ $(document).ready(function(){
                                     $("#mobi_video").prop('muted', false)[0].play();
                                     $("#mobi_video").on('ended', function() {
                                     $("#movie_02").hide();
+                                    fadeOutAudio(audio_bgm_04, 1000);
                                     setTimeout(function() {
                                         timeVideo.style.display = "block";
-                                        fadeOutAudio(audio_bgm_04, 1000);
                                         audio_voice12.play();
+                                        audio_bgm_05.play();
                                         audio_voice12.addEventListener('ended', function() {
                                             audio_voice12_2.play();
-                                            audio_bgm_05.play();
                                             $("#icon_fx_02").fadeIn(1000);
                   //                          blink();
                                         });
@@ -452,11 +460,21 @@ $(document).ready(function(){
                 setTimeout(function() {
                     audio_voice10_2.play();
                     audio_voice10_2.addEventListener('ended', function() {
-                        $("#msg_input_guide_img").attr('src', './images/nateon_input04.png');
+                        $('#msg_input').css({
+                            'margin-top': '870px',
+                            'left':'575px'
+                        });
+                        $("#msg_input_guide_img").attr('src', './images/nateon_input04_01.png');
                         $("#msg_input_guide").fadeIn(1000);
+                        
+                  //      $("#msg_input_guide_img").attr('src', './images/nateon_input04.png');
+                //        $("#msg_input_guide").fadeIn(1000);
                         $("#msg_input").show();
                         $("#msg_send").show();
                         $("#nate_msg_input").focus();
+                        setTimeout(function() {
+                                $("#msg_input_guide_img").attr('src', './images/nateon_input04_02.png');
+                        }, 30000);
                     });
                 }, 1000);
             } else {
@@ -531,11 +549,23 @@ $(document).ready(function(){
             $("#window_password").hide();
             audio_voice13.play();
             audio_voice13.addEventListener('ended', function() {
-                $("#msg_input_guide_img").attr('src', './images/nateon_input05.png');
+                $('#msg_input').css({
+                            'margin-top': '870px',
+                            'left':'574px'
+                        });
+                $("#msg_input_guide_img").attr('src', './images/nateon_input05_01.png');
                 $("#msg_input_guide").fadeIn(1000);
+                        
+                  //      $("#msg_input_guide_img").attr('src', './images/nateon_input04.png');
+                //        $("#msg_input_guide").fadeIn(1000);
                 $("#msg_input").show();
                 $("#msg_send").show();
                 $("#nate_msg_input").focus();
+                    setTimeout(function() {
+                                $("#msg_input_guide_img").attr('src', './images/nateon_input05_02.png');
+                    }, 30000);
+         //       $("#msg_input_guide_img").attr('src', './images/nateon_input05.png');
+       //         $("#msg_input_guide").fadeIn(1000);
             });
             progress ++; 
             return;
