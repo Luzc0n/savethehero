@@ -1,6 +1,6 @@
 $(document).ready(function(){
         var correctVal01 = "누구세요?";
-        var correctVal02 = "펜던트";
+        var correctVal02 = ["펜던트", "팬던트"];
         var correctVal03 = "무슨 일인데?";
         var correctVal04 = "방검복";
         var correctVal05 = "장미다방";
@@ -260,7 +260,7 @@ $(document).ready(function(){
         let inputanswer2 = $("#news_input").val();
 
         if ($("#nate_msg_input").is(":visible")) {
-            // 첫 번째 입력박스가 보이는 경우
+            // 누구세요?
             if (inputanswer1 === correctVal01) {
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
@@ -293,7 +293,8 @@ $(document).ready(function(){
                     }, 1500);
                 }, 1500);
                 return;
-            } else if (inputanswer1 === correctVal02) {
+            } // 펜던트
+            else if (inputanswer1 === "펜던트" || inputanswer1 === "팬던트") {
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
                 $("#news_input").val(""); // inputAnswer2 비우기
@@ -324,7 +325,9 @@ $(document).ready(function(){
                     }, 1000);
                 }, 1500);
                 return;
-            } else if (inputanswer1 === correctVal03) {
+            }
+            //무슨 일인데?
+            else if (inputanswer1 === correctVal03) {
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
                 $("#news_input").val(""); // inputAnswer2 비우기
@@ -343,7 +346,9 @@ $(document).ready(function(){
                     }, 1000);
                 }, 1500);
                 return;
-            }else if (inputanswer1 === correctVal04) {
+            }
+            //방검복
+            else if (inputanswer1 === correctVal04) {
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
                 $("#news_input").val(""); // inputAnswer2 비우기
@@ -394,7 +399,9 @@ $(document).ready(function(){
                     }, 1500);
                 }, 2000);
                 return;
-            }else if (inputanswer1 === correctVal05) {
+            }
+            //장미다방
+            else if (inputanswer1 === correctVal05) {
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
                 $("#news_input").val(""); // inputAnswer2 비우기
@@ -523,7 +530,7 @@ $(document).ready(function(){
 
         // Ctrl + 2
         else if (event.ctrlKey && event.keyCode === 50 && progress ==2) {
-            fadeOutAudio(audio_bgm_03, 1000);
+            fadeOutAudio(audio_bgm_03, 500);
             setTimeout(function() {
                 audio_bgm_04.play();
             }, 2000);
