@@ -9,6 +9,9 @@ $(document).ready(function(){
         audio_wrong.volume = 0.3;
         var keyPressCount = 0; // 키 입력 카운트 변수
         var natemsg = 1;
+        let delayTimeout;
+        let delayTimeout12;
+        let delayTimeout_ctrl2;
         const timeVideo = document.getElementById("time_video");
         var audio_login = new Audio('sounds/nateon_login.mp3');
         audio_login.volume = 0.5;
@@ -18,6 +21,8 @@ $(document).ready(function(){
         audio_msg2.volume = 0.5;
         var audio_alarm = new Audio('sounds/alarm.mp3');
         audio_alarm.volume = 0.5;
+        var audio_alarm2 = new Audio('sounds/alarm_2.mp3');
+        audio_alarm2.volume = 0.5;
         var audio_voice1 = new Audio('sounds/voice_01.mp3');
         audio_voice1.volume = 0.5;
         var audio_voice2 = new Audio('sounds/voice_02.mp3');
@@ -56,6 +61,10 @@ $(document).ready(function(){
         audio_voice16.volume = 0.5;
         var audio_voice17 = new Audio('sounds/voice_17.mp3');
         audio_voice17.volume = 0.5;
+        var audio_voice10_delay = new Audio('sounds/voice_10_delay.mp3');
+        audio_voice10_delay.volume = 0.5;
+        var audio_voice12_delay = new Audio('sounds/voice_12_delay.mp3');
+        audio_voice12_delay.volume = 0.5;
         var audio_voice18 = new Audio('sounds/voice_18.mp3');
         audio_voice18.volume = 0.7;
         var audio_call = new Audio('sounds/phonecall.wav');
@@ -214,6 +223,7 @@ $(document).ready(function(){
                         }, 1400);
             });
         $("#icon_fx_01").click(function() {
+            clearTimeout(delayTimeout);
             $("#icon_fx_01").hide();
             $("#window_news").slideDown(500);
             $("#window_news_cnt").delay(500).fadeIn(500);
@@ -225,6 +235,7 @@ $(document).ready(function(){
             
         });
         $("#icon_fx_02").click(function() {
+            clearTimeout(delayTimeout12);
             $("#icon_fx_02").hide();
             $("#window_password").slideDown(500);
     //        $("#window_news_cnt").delay(500).fadeIn(500);
@@ -244,7 +255,9 @@ $(document).ready(function(){
                                 setTimeout(function() {
                                     audio_bgm_07.play();
                                     $("#movie_end").show();
-                                    $("#end_video").prop('muted', false)[0].play();
+                                    setTimeout(function() {
+                                        $("#end_video").prop('muted', false)[0].play();
+                                    }, 10000);
                                 }, 2000);
                         });
                     }, 1000);
@@ -328,6 +341,7 @@ $(document).ready(function(){
             }
             //무슨 일인데?
             else if (inputanswer1 === correctVal03) {
+                clearTimeout(delayTimeout_ctrl2);
                 $("#msg_input_guide").hide();
                 $("#nate_msg_input").val("");
                 $("#news_input").val(""); // inputAnswer2 비우기
@@ -342,6 +356,9 @@ $(document).ready(function(){
                         audio_voice10.addEventListener('ended', function() {
                             $("#icon_fx_01").fadeIn(1000);
   //                          blink();
+                            delayTimeout = setTimeout(() => {
+                                audio_voice10_delay.play();
+                            }, 30000);
                         });
                     }, 1000);
                 }, 1500);
@@ -389,6 +406,9 @@ $(document).ready(function(){
                                             audio_voice12_2.play();
                                             $("#icon_fx_02").fadeIn(1000);
                   //                          blink();
+                                            delayTimeout12 = setTimeout(() => {
+                                                audio_voice12_delay.play();
+                                            }, 30000);
                                         });
                                     }, 500);
                                     });
@@ -535,6 +555,9 @@ $(document).ready(function(){
                 audio_bgm_04.play();
             }, 2000);
             event.preventDefault();
+            delayTimeout_ctrl2 = setTimeout(() => {
+                audio_alarm2.play();
+            }, 30000);
             $("#msg_nateon_img").attr('src','./images/msg_nateon2.png');
             audio_msg.play();
             $("#msg_cnt_img").attr('src', './images/nateon_msg_1_10.png');
