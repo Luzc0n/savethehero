@@ -17,6 +17,8 @@ $(document).ready(function(){
         audio_login.volume = 0.5;
         var audio_msg = new Audio('sounds/nateon_msg.mp3');
         audio_msg.volume = 0.5;
+        var audio_change = new Audio('sounds/change.wav');
+        audio_change.volume = 0.3;
         var audio_msg2 = new Audio('sounds/nateon_msg.mp3');
         audio_msg2.volume = 0.5;
         var audio_alarm = new Audio('sounds/alarm.mp3');
@@ -240,6 +242,7 @@ $(document).ready(function(){
             $("#window_password").slideDown(500);
     //        $("#window_news_cnt").delay(500).fadeIn(500);
         });
+    //엔딩
         $("#call_btn").click(function() {
             $("#call_btn").hide();
             audio_call.pause();
@@ -253,11 +256,15 @@ $(document).ready(function(){
                             $("#call").fadeOut(1000);
                             $("#msg_kakao").fadeOut(1000);
                                 setTimeout(function() {
-                                    audio_bgm_07.play();
-                                    $("#movie_end").show();
-                                    setTimeout(function() {
-                                        $("#end_video").prop('muted', false)[0].play();
-                                    }, 10000);
+                                   audio_bgm_07.play();
+                                   setTimeout(function() {
+                                       $("#movie_end").show();
+                                       $("#end_video").prop('muted', false)[0].play();
+                                       audio_change.play();
+                                       $("#end_video").on('ended', function() { 
+                                            this.pause();  // 영상 재생 완료 후 멈춤
+                                        });
+                                    }, 5000);
                                 }, 2000);
                         });
                     }, 1000);
@@ -615,6 +622,11 @@ $(document).ready(function(){
             audio_voice16.play();
             audio_voice16.addEventListener('ended', function() {
                 fadeOutAudio(audio_bgm_06, 1000);
+                fadeOutAudio(audio_bgm_05, 0);
+                fadeOutAudio(audio_bgm_04, 0);
+                fadeOutAudio(audio_bgm_03, 0);
+                fadeOutAudio(audio_bgm_02, 0);
+                fadeOutAudio(audio_bgm_01, 0);
                 $("#msg_nateon").hide();
                 $("#msg_input").hide();
                 $("#msg_input_guide").hide();
