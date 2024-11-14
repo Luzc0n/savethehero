@@ -555,13 +555,13 @@ $(document).ready(function(){
                 audio_bgm_04.play();
             }, 2000);
             event.preventDefault();
-            delayTimeout_ctrl2 = setTimeout(() => {
-                audio_alarm2.play();
-            }, 30000);
             $("#msg_nateon_img").attr('src','./images/msg_nateon2.png');
             audio_msg.play();
             $("#msg_cnt_img").attr('src', './images/nateon_msg_1_10.png');
             setTimeout(function() {
+                delayTimeout_ctrl2 = setTimeout(() => {
+                   audio_alarm2.play();
+                }, 30000);
                 $("#msg_input_guide_img").attr('src', './images/nateon_input03.png');
                 $("#msg_input_guide").fadeIn(1000);
                 $("#msg_input").show();
